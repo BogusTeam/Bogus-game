@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
         }
 
         var delta = _agent.destination - gameObject.transform.position;
-        if (Math.Abs(delta.x) < 0.08 || Math.Abs(delta.z) < 0.08)
+        if (Math.Abs(delta.x) < 0.1 && Math.Abs(delta.z) < 0.1)
         {
             _animator.Play(_idleAnimation);
             // Debug.Log(_idleAnimation);
