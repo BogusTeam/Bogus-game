@@ -1002,6 +1002,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2410209fc808354ea176674c0db02e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraYAxisSpeed: 15
+  cameraZAxisSpeed: 22
+  cameraXAngleBevel: 3
+  cameraLookSpeed: 35
+  player: {fileID: 789691337}
 --- !u!4 &1015485468 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7631195025273566085, guid: f079b2f7fe4206e43b4280957f931c9a, type: 3}
