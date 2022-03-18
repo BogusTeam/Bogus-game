@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private Animator _animator;
     private String _walkingAnimation = "Walk";
     private String _idleAnimation = "Idle";
+    private bool _walkingState;
     
 
     // Start is called before the first frame update
@@ -28,17 +29,24 @@ public class Player : MonoBehaviour
         {
             if (Physics.Raycast(_cam.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 100))
             {
+                _agent.Resume();
                 _agent.SetDestination(hit.point);
                 _animator.Play(_walkingAnimation);
+                _walkingState = true;
                 // Debug.Log(_walkingAnimation);
             }
         }
 
-        var delta = _agent.destination - gameObject.transform.position;
-        if (Math.Abs(delta.x) < 0.1 && Math.Abs(delta.z) < 0.1)
+        if (_walkingState)
         {
-            _animator.Play(_idleAnimation);
-            // Debug.Log(_idleAnimation);
+            var delta = _agent.destination - gameObject.transform.position;
+            if (Math.Abs(delta.x) < 0.1 && Math.Abs(delta.z) < 0.1)
+            {
+                _animator.Play(_idleAnimation);
+                _agent.Stop();
+                _walkingState = false;
+                // Debug.Log(_idleAnimation);
+            }
         }
     }
 }
