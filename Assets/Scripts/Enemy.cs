@@ -1,8 +1,8 @@
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class FollowerPlayer : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     private NavMeshAgent _agent;
     private GameObject _player;
@@ -19,10 +19,8 @@ public class FollowerPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // clicking on the nav mesh, sets the destination of the agent and off he goes
+        // Make check if enemy turn, then go to player/follower and fight!
         var delta = _player.transform.position - _agent.transform.position;
-        // Debug.Log($"Stopped: {_agent.isStopped}");
-        // Debug.Log(delta);
         if (Math.Abs(delta.x) > 4.0 || Math.Abs(delta.z) > 4.0)
         {
             if (_agent.isStopped)

@@ -11,21 +11,24 @@ public class Player : MonoBehaviour
     private String _walkingAnimation = "Walk";
     private String _idleAnimation = "Idle";
     private bool _walkingState;
+    private PauseMenu _pauseMenu;
     
 
     // Start is called before the first frame update
     void Start()
     {
         _cam = Camera.main;
+        _cam.transform.parent = gameObject.transform;
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
+        _pauseMenu = Utils.GetPausedScript();
     }
 
     // Update is called once per frame
     void Update()
     {
         // Clicking on the nav mesh, sets the destination of the agent and off he goes
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !_pauseMenu.pauseEnabled)
         {
             if (Physics.Raycast(_cam.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 100))
             {
@@ -46,6 +49,10 @@ public class Player : MonoBehaviour
                 _agent.Stop();
                 _walkingState = false;
                 // Debug.Log(_idleAnimation);
+            }
+            else if (Math.Abs(delta.x) < 0.9 && Math.Abs(delta.z) < 0.9)
+            {
+                _animator.Play(_idleAnimation);
             }
         }
     }
