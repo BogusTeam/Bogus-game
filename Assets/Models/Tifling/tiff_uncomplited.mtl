@@ -1,0 +1,45 @@
+# Blender MTL File: 'tiff_uncomplited.blend'
+# Material Count: 4
+
+newmtl Extract7.001
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 0.500000 0.500000 0.500000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\Valentin\\Documents\\Allegorithmic\\Substance Painter\\export\\tiff\\horns\\horns_Extract7_BaseMap.png
+
+newmtl FABRIC_1_FRONT_1729.001
+Ns 734.822057
+Ka 0.200000 0.200000 0.200000
+Kd 0.009163 0.001619 0.013034
+Ks 0.370909 0.370909 0.370909
+Ke 0.000000 0.000000 0.000000
+Ni 0.000000
+d 1.000000
+illum 3
+
+newmtl Tifsy.001
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 0.500000 0.500000 0.500000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\Valentin\\Documents\\Allegorithmic\\Substance Painter\\export\\tiff\\body\\body_Tifsy_BaseMap.png
+
+newmtl Tifsy1.001
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 0.500000 0.500000 0.500000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\Valentin\\Documents\\Allegorithmic\\Substance Painter\\export\\tiff\\head\\head_Tifsy1_BaseMap.png
