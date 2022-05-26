@@ -8,10 +8,10 @@ public class CameraMovement : MonoBehaviour
     public float cameraZAxisSpeed = 2.0f;
     public float cameraXAngleBevel = 3.0f;
     public float cameraLookSpeed = 10.0f;
+    public int currentCameraPos = 1;
     
     private GameObject _player;
     private readonly List<int> _localCameraPositions = new() { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
-    private int _currentCameraPos = 1;
     private Camera _cam;
 
     // Start is called before the first frame update
@@ -27,8 +27,8 @@ public class CameraMovement : MonoBehaviour
     void Update()
     {
         if (Input.mouseScrollDelta.y != 0 &&
-            (Input.mouseScrollDelta.y < 0 && _currentCameraPos < _localCameraPositions.Last() ||
-             Input.mouseScrollDelta.y > 0 && _currentCameraPos > _localCameraPositions.First()))
+            (Input.mouseScrollDelta.y < 0 && currentCameraPos < _localCameraPositions.Last() ||
+             Input.mouseScrollDelta.y > 0 && currentCameraPos > _localCameraPositions.First()))
         {
             // var pos = _cam.transform.localPosition;
             // pos.y -= 6 * Input.mouseScrollDelta.y;
@@ -38,8 +38,8 @@ public class CameraMovement : MonoBehaviour
             _cam.transform.Translate(new Vector3(0, 10 * cameraYAxisSpeed * -Input.mouseScrollDelta.y,
                 10 * cameraZAxisSpeed * Input.mouseScrollDelta.y) * Time.deltaTime);
             _cam.transform.Rotate(Input.mouseScrollDelta.y * -cameraXAngleBevel, 0, 0);
-            _currentCameraPos -= (int)Input.mouseScrollDelta.y;
-            Debug.Log($"Current Camera Position: {_currentCameraPos}");
+            currentCameraPos -= (int)Input.mouseScrollDelta.y;
+            Debug.Log($"Current Camera Position: {currentCameraPos}");
         }
 
         if (Input.GetMouseButtonDown(2))

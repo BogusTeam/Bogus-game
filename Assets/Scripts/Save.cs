@@ -19,6 +19,7 @@ public class Target
     public int healthPoints;
     public int armorRating;
     public int attackRating;
+    public int cameraPosition;
 }
 
 [Serializable]
