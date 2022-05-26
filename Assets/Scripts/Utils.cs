@@ -70,6 +70,8 @@ public class Utils
         foreach (var targetGameObject in targets)
         {
             var entity = targetGameObject.GetComponent<Entity>();
+            if (entity.type == TargetTypes.Trigger)
+                continue;
             var camPos = targetGameObject.GetComponent<CameraMovement>() != null
                 ? targetGameObject.GetComponent<CameraMovement>().currentCameraPos
                 : 0;
@@ -104,6 +106,8 @@ public class Utils
         foreach (var obj in GetObjectsWithScriptEntity())
         {
             var script = obj.GetComponent<Entity>();
+            if (script.type == TargetTypes.Trigger)
+                continue;
             var selectedTarget = save.TargetsList[obj.name];
             script.type = selectedTarget.targetType;
             script.armorRating = selectedTarget.armorRating;
@@ -111,8 +115,7 @@ public class Utils
             script.healthPoints = selectedTarget.healthPoints;
             obj.transform.position = selectedTarget.targetPosition.GetVector3();
             obj.transform.rotation = selectedTarget.targetRotation.GetQuaternion();
-            if (obj.GetComponent<CameraMovement>() != null)
-                obj.GetComponent<CameraMovement>().currentCameraPos = selectedTarget.cameraPosition;
+            script.cameraPos = selectedTarget.cameraPosition;
         }
 
         // Money and location...

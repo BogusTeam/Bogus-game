@@ -3,10 +3,14 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     public TargetTypes type;
+    public TriggerTypes triggerType;
     public int healthPoints = 100;
     public int attackRating;
     public int armorRating;
     public int accuracyRating;
+
+    public int cameraPos = 1;
+    public int moneyToSet;
 
     // private void OnApplicationPause(bool pauseStatus)
     // {
@@ -28,6 +32,9 @@ public class Entity : MonoBehaviour
                 break;
             case TargetTypes.Camera:
                 gameObject.AddComponent<CameraMovement>();
+                break;
+            case TargetTypes.Trigger:
+                gameObject.AddComponent<Trigger>();
                 break;
         }
     }

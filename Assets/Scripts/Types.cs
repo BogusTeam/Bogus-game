@@ -4,6 +4,16 @@
     Follower,
     Enemy,
     Camera,
+    Trigger,
+}
+
+public enum TriggerTypes
+{
+    None,
+    Money,
+    Fight,
+    Teleport,
+    Dialog
 }
 
 public enum LocationNames
