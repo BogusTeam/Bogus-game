@@ -61,8 +61,8 @@ public class Utils
             var entity = targetGameObject.GetComponent<Entity>();
             save.TargetsList[targetGameObject.name] = new Target
             {
-                targetPosition = new Vector(targetGameObject.transform.position),
-                targetRotation = new Vector(targetGameObject.transform.rotation.eulerAngles),
+                targetPosition = new VectorS(targetGameObject.transform.position),
+                targetRotation = new QuaternionS(targetGameObject.transform.rotation),
                 targetType = entity.type,
                 healthPoints = entity.healthPoints,
                 attackRating = entity.attackRating,
@@ -91,7 +91,7 @@ public class Utils
             script.attackRating = selectedTarget.attackRating;
             script.healthPoints = selectedTarget.healthPoints;
             obj.transform.position = selectedTarget.targetPosition.GetVector3();
-            obj.transform.rotation.SetLookRotation(selectedTarget.targetRotation.GetVector3());
+            obj.transform.rotation = selectedTarget.targetRotation.GetQuaternion();
         }
 
         // Money and location...

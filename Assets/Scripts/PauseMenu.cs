@@ -36,7 +36,7 @@ public class PauseMenu : MonoBehaviour
         if (File.Exists(Application.persistentDataPath + $"/{Utils.SaveName}"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            Utils.LoadSavedGame();
+            SceneManager.sceneLoaded += (_, _) => Utils.LoadSavedGame();
         }
     }
 

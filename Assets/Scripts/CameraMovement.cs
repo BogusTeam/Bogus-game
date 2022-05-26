@@ -8,8 +8,8 @@ public class CameraMovement : MonoBehaviour
     public float cameraZAxisSpeed = 2.0f;
     public float cameraXAngleBevel = 3.0f;
     public float cameraLookSpeed = 10.0f;
-    public GameObject player;
-
+    
+    private GameObject _player;
     private readonly List<int> _localCameraPositions = new() { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
     private int _currentCameraPos = 1;
     private Camera _cam;
@@ -18,6 +18,9 @@ public class CameraMovement : MonoBehaviour
     void Start()
     {
         _cam = Camera.main;
+        _player = Utils.GetPlayerObject();
+        if (_player == null)
+            Debug.Log("Player object is not found!");
     }
 
     // Update is called once per frame
@@ -43,7 +46,7 @@ public class CameraMovement : MonoBehaviour
             Debug.Log("ScrollButton pressed!");
         else if (Input.GetMouseButton(2))
             _cam.transform.RotateAround(
-                player.transform.position,
+                _player.transform.position,
                 new Vector3(0, 1.0f, 0),
                 10 * Input.GetAxis("Mouse X") * Time.deltaTime * cameraLookSpeed
             );

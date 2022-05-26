@@ -27,6 +27,9 @@ public class Entity : MonoBehaviour
             case TargetTypes.Enemy:
                 gameObject.AddComponent<Enemy>();
                 break;
+            case TargetTypes.Camera:
+                gameObject.AddComponent<CameraMovement>();
+                break;
         }
     }
 }

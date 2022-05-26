@@ -13,8 +13,8 @@ public class Save
 [Serializable]
 public class Target
 {
-    public Vector targetPosition;
-    public Vector targetRotation;
+    public VectorS targetPosition;
+    public QuaternionS targetRotation;
     public TargetTypes targetType;
     public int healthPoints;
     public int armorRating;
@@ -22,13 +22,13 @@ public class Target
 }
 
 [Serializable]
-public class Vector
+public class VectorS
 {
     public float x;
     public float y;
     public float z;
 
-    public Vector(Vector3 vector3)
+    public VectorS(Vector3 vector3)
     {
         x = vector3.x;
         y = vector3.y;
@@ -37,8 +37,36 @@ public class Vector
 
     public Vector3 GetVector3()
     {
-        return new Vector3()
+        return new Vector3
         {
+            x = x,
+            y = y,
+            z = z
+        };
+    }
+}
+
+[Serializable]
+public class QuaternionS
+{
+    public float w;
+    public float x;
+    public float y;
+    public float z;
+
+    public QuaternionS(Quaternion quaternion)
+    {
+        w = quaternion.w;
+        x = quaternion.x;
+        y = quaternion.y;
+        z = quaternion.z;
+    }
+
+    public Quaternion GetQuaternion()
+    {
+        return new Quaternion
+        {
+            w = w,
             x = x,
             y = y,
             z = z

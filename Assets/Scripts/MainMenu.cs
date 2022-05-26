@@ -25,7 +25,7 @@ public class MainMenu : MonoBehaviour
         if (File.Exists(Application.persistentDataPath + $"/{Utils.SaveName}"))
         {
             SceneManager.LoadScene("MainScene");
-            Utils.LoadSavedGame();
+            SceneManager.sceneLoaded += (_, _) => Utils.LoadSavedGame();
         }
     }
 
