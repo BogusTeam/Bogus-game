@@ -7,7 +7,6 @@ public class Entity : MonoBehaviour
     public int attackRating;
     public int armorRating;
     public int accuracyRating;
-    
 
     // private void OnApplicationPause(bool pauseStatus)
     // {

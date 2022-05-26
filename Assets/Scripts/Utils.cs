@@ -3,6 +3,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Utils
 {
@@ -21,6 +22,16 @@ public class Utils
         }
 
         return objectsInScene;
+    }
+
+    [CanBeNull]
+    public static Stats GetStatsScript()
+    {
+        foreach (var obj in GetAllObjectsInScene())
+            if (obj.GetComponent<Stats>() != null)
+                return obj.GetComponent<Stats>();
+
+        return null;
     }
 
     [CanBeNull]
@@ -74,8 +85,12 @@ public class Utils
             };
         }
 
-        save.moneyCount = 33;
-        save.locationName = LocationNames.StartingLocation;
+        var script = GetStatsScript();
+        if (script != null)
+        {
+            save.moneyCount = script.Money;
+            save.locationName = script.locationName;
+        }
 
         return save;
     }
@@ -101,6 +116,26 @@ public class Utils
         }
 
         // Money and location...
+        var statsScript = GetStatsScript();
+        if (statsScript != null)
+        {
+            statsScript.Money = save.moneyCount;
+            statsScript.locationName = save.locationName;
+        }
+
         Debug.Log("Game Loaded");
+    }
+
+    public static void ChangeHeroHp(int hp)
+    {
+        var playerObj = GetPlayerObject();
+        if (playerObj != null)
+            playerObj.GetComponent<Entity>().healthPoints = hp;
+
+        var statsScript = GetStatsScript();
+        if (statsScript != null)
+        {
+            statsScript.heroHp.GetComponent<Text>().text = $"Хп героя: {hp}";
+        }
     }
 }

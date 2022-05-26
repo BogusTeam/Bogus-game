@@ -12,7 +12,6 @@ public class Player : MonoBehaviour
     private String _idleAnimation = "Idle";
     private bool _walkingState;
     private PauseMenu _pauseMenu;
-    
 
     // Start is called before the first frame update
     void Start()

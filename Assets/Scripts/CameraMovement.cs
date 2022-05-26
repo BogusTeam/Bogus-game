@@ -9,7 +9,7 @@ public class CameraMovement : MonoBehaviour
     public float cameraXAngleBevel = 3.0f;
     public float cameraLookSpeed = 10.0f;
     public int currentCameraPos = 1;
-    
+
     private GameObject _player;
     private readonly List<int> _localCameraPositions = new() { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
     private Camera _cam;
