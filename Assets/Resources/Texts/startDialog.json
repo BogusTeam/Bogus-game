@@ -1,0 +1,60 @@
+﻿{
+  "dialogs": [
+    {
+      "id": 1,
+      "author": "Дварф",
+      "authorDialog": "Well met! Давно тебя не было в уличных гонках... Возьмёшь кассита?",
+      "choices": [
+        {
+          "choice": "Ага",
+          "nextIdWithoutKassit": 2,
+          "nextIdWithKassit": 3,
+          "isKassitWithUs": true,
+          "money": 300
+        },
+        {
+          "choice": "Вас сюда не звали",
+          "nextIdWithoutKassit": 2,
+          "nextIdWithKassit": 3,
+          "isKassitWithUs": false
+        },
+        {
+          "choice": "Выйти из игры",
+          "quitGame": true
+        }
+      ],
+      "chooseKassit": true
+    },
+    {
+      "id": 2,
+      "author": "Рассказчик",
+      "authorDialog": "Я уйду. Удачи...",
+      "choices": [
+        {
+          "choice": "Ок"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "author": "Рассказчик",
+      "authorDialog": "Я буду ждать вас здесь же. Удачи.",
+      "choices": [
+        {
+          "choice": "Ок"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "author": "Система",
+      "authorDialog": "3.. 2.. 1.. Поехали!",
+      "choices": [
+        {
+          "choice": "???",
+          "quitGame": true
+        }
+      ]
+    }
+  ]
+}

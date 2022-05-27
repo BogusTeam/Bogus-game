@@ -11,6 +11,8 @@ public class Entity : MonoBehaviour
 
     public int cameraPos = 1;
     public int moneyToSet;
+    public string dialogNameToSet;
+    public GameObject linkedObject;
 
     // private void OnApplicationPause(bool pauseStatus)
     // {

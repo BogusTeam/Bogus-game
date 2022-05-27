@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using JetBrains.Annotations;
@@ -50,6 +51,16 @@ public class Utils
         foreach (var obj in GetAllObjectsInScene())
             if (obj.GetComponent<Player>() != null)
                 return obj;
+
+        return null;
+    }
+
+    [CanBeNull]
+    public static Dialogs GetDialogsScript()
+    {
+        foreach (var obj in GetAllObjectsInScene())
+            if (obj.GetComponent<Dialogs>() != null)
+                return obj.GetComponent<Dialogs>();
 
         return null;
     }
@@ -139,6 +150,43 @@ public class Utils
         if (statsScript != null)
         {
             statsScript.heroHp.GetComponent<Text>().text = $"Хп героя: {hp}";
+        }
+    }
+
+    public static DialogList GetDialogs(string dialogName)
+    {
+        var dialog = Resources.Load<TextAsset>($"Texts/{dialogName}");
+        return JsonUtility.FromJson<DialogList>(dialog.text);
+    }
+
+    public static void CreateDialogPanel(DialogList dialogs, int chosenId = 0)
+    {
+        var script = GetDialogsScript();
+        if (script == null)
+        {
+            Debug.Log("Dialogs script not found!");
+            return;
+        }
+
+        if (chosenId < 0)
+        {
+            script.inDialog = false;
+            return;
+        }
+
+        var chosenDialog = chosenId != 0 ? dialogs.dialogs.Find(d => d.id == chosenId) : dialogs.dialogs[0];
+        script.inDialog = true;
+        switch (chosenDialog.choices.Count)
+        {
+            case 1:
+                script.CreateDialogFor1Action(chosenDialog);
+                break;
+            case 2:
+                script.CreateDialogFor2Actions(chosenDialog);
+                break;
+            case 3:
+                script.CreateDialogFor3Actions(chosenDialog);
+                break;
         }
     }
 }

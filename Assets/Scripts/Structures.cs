@@ -74,3 +74,30 @@ public class QuaternionS
         };
     }
 }
+
+[Serializable]
+public class DialogList
+{
+    public List<Dialog> dialogs;
+}
+
+[Serializable]
+public class Dialog
+{
+    public int id;
+    public string author;
+    public string authorDialog;
+    public List<Choice> choices;
+    public bool chooseKassit;
+}
+
+[Serializable]
+public class Choice
+{
+    public string choice;
+    public int nextIdWithoutKassit = -1;
+    public int nextIdWithKassit = -1;
+    public bool isKassitWithUs;
+    public int money;
+    public bool quitGame;
+}

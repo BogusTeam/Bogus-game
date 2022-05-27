@@ -483,6 +483,8 @@ MonoBehaviour:
   accuracyRating: 0
   cameraPos: 1
   moneyToSet: 0
+  dialogNameToSet: 
+  linkedObject: {fileID: 0}
 --- !u!4 &114498149 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f2d1f77178390c343912558a67efb6f1, type: 3}
@@ -803,6 +805,8 @@ MonoBehaviour:
   accuracyRating: 0
   cameraPos: 1
   moneyToSet: 111
+  dialogNameToSet: 
+  linkedObject: {fileID: 0}
 --- !u!65 &194689677
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1897,6 +1901,7 @@ GameObject:
   m_Component:
   - component: {fileID: 421370614}
   - component: {fileID: 421370613}
+  - component: {fileID: 421370615}
   m_Layer: 0
   m_Name: Stats
   m_TagString: Untagged
@@ -1917,7 +1922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyText: {fileID: 2029331452}
-  heroHp: {fileID: 0}
+  heroHp: {fileID: 712225352}
   locationName: 0
 --- !u!4 &421370614
 Transform:
@@ -1934,6 +1939,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &421370615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421370612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4692b6796f53f64b8173221dd7389e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogPanel: {fileID: 317539098}
+  prefabFor1Action: {fileID: 4309274080943816748, guid: 19975b28b9e67a540b6ad19297d6e9b6, type: 3}
+  prefabFor2Actions: {fileID: 4386755096246855348, guid: 36ac9767043c78642893035dc5322ea3, type: 3}
+  prefabFor3Actions: {fileID: 7190299472250712704, guid: 25e6a7628123b6e4483784ffda616f18, type: 3}
+  dialogs:
+    dialogs: []
+  inDialog: 0
+  haveKassit: 0
 --- !u!1001 &425119680
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2088,6 +2113,126 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2d1f77178390c343912558a67efb6f1, type: 3}
+--- !u!1 &443650080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 443650081}
+  - component: {fileID: 443650085}
+  - component: {fileID: 443650084}
+  - component: {fileID: 443650083}
+  - component: {fileID: 443650082}
+  m_Layer: 0
+  m_Name: DialogTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &443650081
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443650080}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.8, y: -0.72, z: 10.08}
+  m_LocalScale: {x: 7.7924, y: 2.4096367, z: 6.3979}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1717614389}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &443650082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443650080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a8c3a2cf454be69e4c50deca1c1f71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 4
+  triggerType: 4
+  healthPoints: 100
+  attackRating: 0
+  armorRating: 0
+  accuracyRating: 0
+  cameraPos: 1
+  moneyToSet: 0
+  dialogNameToSet: startDialog
+  linkedObject: {fileID: 0}
+--- !u!65 &443650083
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443650080}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &443650084
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443650080}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &443650085
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443650080}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &462412215
 GameObject:
   m_ObjectHideFlags: 0
@@ -3362,6 +3507,8 @@ MonoBehaviour:
   accuracyRating: 0
   cameraPos: 1
   moneyToSet: 0
+  dialogNameToSet: 
+  linkedObject: {fileID: 0}
 --- !u!195 &786144068
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3558,6 +3705,8 @@ MonoBehaviour:
   accuracyRating: 0
   cameraPos: 1
   moneyToSet: 0
+  dialogNameToSet: 
+  linkedObject: {fileID: 0}
 --- !u!23 &789691352
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3937,6 +4086,8 @@ MonoBehaviour:
   accuracyRating: 0
   cameraPos: 1
   moneyToSet: 0
+  dialogNameToSet: 
+  linkedObject: {fileID: 0}
 --- !u!1001 &977108049
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4189,6 +4340,8 @@ MonoBehaviour:
   accuracyRating: 0
   cameraPos: 1
   moneyToSet: 0
+  dialogNameToSet: 
+  linkedObject: {fileID: 0}
 --- !u!1001 &1016741854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5073,6 +5226,8 @@ MonoBehaviour:
   accuracyRating: 0
   cameraPos: 1
   moneyToSet: 20000
+  dialogNameToSet: 
+  linkedObject: {fileID: 1167081812}
 --- !u!65 &1104976543
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5315,6 +5470,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2d1f77178390c343912558a67efb6f1, type: 3}
+--- !u!1 &1167081812 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d7d7896dea643b6418c8032aba9a7910, type: 3}
+  m_PrefabInstance: {fileID: 665830758}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1175459018
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10063,6 +10223,7 @@ Transform:
   - {fileID: 773502375}
   - {fileID: 1080921719}
   - {fileID: 7605599481731403316}
+  - {fileID: 443650081}
   m_Father: {fileID: 822992452}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11635,6 +11796,8 @@ MonoBehaviour:
   accuracyRating: 0
   cameraPos: 1
   moneyToSet: 0
+  dialogNameToSet: 
+  linkedObject: {fileID: 0}
 --- !u!1001 &3171634483579794733
 PrefabInstance:
   m_ObjectHideFlags: 0

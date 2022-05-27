@@ -8,6 +8,7 @@ public class Stats : MonoBehaviour
     public LocationNames locationName = LocationNames.StartingLocation;
 
     private int _money;
+    private int _heroHp;
 
     public int Money
     {
@@ -16,6 +17,16 @@ public class Stats : MonoBehaviour
         {
             _money = value;
             moneyText.GetComponent<Text>().text = $"Деньги: {value}";
+        }
+    }
+
+    public int HeroHP
+    {
+        get => _heroHp;
+        set
+        {
+            _heroHp = value;
+            heroHp.GetComponent<Text>().text = $"ХП героя: {value}";
         }
     }
 }
