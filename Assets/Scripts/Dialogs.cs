@@ -26,8 +26,8 @@ public class Dialogs : MonoBehaviour
                 Application.Quit();
             if (dialog.choices[0].money > 0)
                 Utils.GetStatsScript()!.Money += dialog.choices[0].money;
-            if (dialog.chooseKassit && dialog.choices[0].isKassitWithUs)
-                haveKassit = true;
+            if (dialog.chooseKassit)
+                haveKassit = dialog.choices[0].isKassitWithUs;
             Utils.CreateDialogPanel(dialogs,
                 haveKassit ? dialog.choices[0].nextIdWithKassit : dialog.choices[0].nextIdWithoutKassit);
             Destroy(prefab);
@@ -51,8 +51,8 @@ public class Dialogs : MonoBehaviour
                     Application.Quit();
                 if (dialog.choices[index].money > 0)
                     Utils.GetStatsScript()!.Money += dialog.choices[index].money;
-                if (dialog.chooseKassit && dialog.choices[index].isKassitWithUs)
-                    Utils.GetDialogsScript()!.haveKassit = true;
+                if (dialog.chooseKassit)
+                    Utils.GetDialogsScript()!.haveKassit = dialog.choices[index].isKassitWithUs;
                 Utils.CreateDialogPanel(dialogs,
                     haveKassit ? dialog.choices[index].nextIdWithKassit : dialog.choices[index].nextIdWithoutKassit);
                 Destroy(prefab);
@@ -77,8 +77,8 @@ public class Dialogs : MonoBehaviour
                     Application.Quit();
                 if (dialog.choices[index].money > 0)
                     Utils.GetStatsScript()!.Money += dialog.choices[index].money;
-                if (dialog.chooseKassit && dialog.choices[index].isKassitWithUs)
-                    Utils.GetDialogsScript()!.haveKassit = true;
+                if (dialog.chooseKassit)
+                    Utils.GetDialogsScript()!.haveKassit = dialog.choices[index].isKassitWithUs;
                 Utils.CreateDialogPanel(dialogs,
                     haveKassit ? dialog.choices[index].nextIdWithKassit : dialog.choices[index].nextIdWithoutKassit);
                 Destroy(prefab);
