@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -85,6 +86,16 @@ public class Utils
 
         return list;
     }
+    
+    public static List<GameObject> GetEnemies()
+    {
+        var list = new List<GameObject>();
+        foreach (var obj in GetAllObjectsInScene())
+            if (obj.GetComponent<Entity>() != null && obj.GetComponent<Entity>().type is TargetTypes.Enemy)
+                list.Add(obj);
+
+        return list;
+    }
 
     public static Save CreateSaveGameObject(List<GameObject> targets)
     {
@@ -154,13 +165,19 @@ public class Utils
     public static void ChangeHeroHp(int hp)
     {
         var playerObj = GetPlayerObject();
-        if (playerObj != null)
-            playerObj.GetComponent<Entity>().healthPoints = hp;
+        playerObj!.GetComponent<Entity>().healthPoints += hp;
+        var playerHp = playerObj!.GetComponent<Entity>().healthPoints;
 
         var statsScript = GetStatsScript();
         if (statsScript != null)
         {
-            statsScript.heroHp.GetComponent<Text>().text = $"Хп героя: {hp}";
+            statsScript.heroHp.GetComponent<Text>().text = $"Хп героя: {playerHp}";
+        }
+
+        if (playerHp < 1)
+        {
+            GetDialogsScript()!.inDialog = true;
+            CreateDialogPanel(GetDialogs("gameOver"));
         }
     }
 

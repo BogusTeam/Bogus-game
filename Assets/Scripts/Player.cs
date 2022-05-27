@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class Player : MonoBehaviour
     private Animator _animator;
     private String _walkingAnimation = "Walk";
     private String _idleAnimation = "Idle";
+    private String _hitAnimation = "Hit";
+    private String _blockAnimation = "Block";
     private bool _walkingState;
     private PauseMenu _pauseMenu;
     private Dialogs _dialogs;
@@ -23,6 +27,15 @@ public class Player : MonoBehaviour
         _animator = GetComponent<Animator>();
         _pauseMenu = Utils.GetPausedScript();
         _dialogs = Utils.GetDialogsScript();
+        Utils.GetStatsScript()!.attackButton.GetComponent<Button>().onClick.AddListener(() =>
+        {
+            StartCoroutine(GetHit());
+            var enemies = Utils.GetEnemies();
+            if (enemies.Count > 0)
+            {
+                enemies[0].GetComponent<Enemy>().GetDamage(-GetComponent<Entity>().attackRating);
+            }
+        });
     }
 
     // Update is called once per frame
@@ -37,7 +50,6 @@ public class Player : MonoBehaviour
                 _agent.SetDestination(hit.point);
                 _animator.Play(_walkingAnimation);
                 _walkingState = true;
-                // Debug.Log(_walkingAnimation);
             }
         }
 
@@ -49,12 +61,26 @@ public class Player : MonoBehaviour
                 _animator.Play(_idleAnimation);
                 _agent.Stop();
                 _walkingState = false;
-                // Debug.Log(_idleAnimation);
+                StartCoroutine(GetBlock());
             }
             else if (Math.Abs(delta.x) < 0.9 && Math.Abs(delta.z) < 0.9)
             {
                 _animator.Play(_idleAnimation);
             }
         }
+    }
+
+    public IEnumerator GetHit()
+    {
+        _animator.Play(_hitAnimation);
+        yield return new WaitForSeconds((float)1.5);
+        _animator.Play(_idleAnimation);
+    }
+
+    public IEnumerator GetBlock()
+    {
+        _animator.Play(_blockAnimation);
+        yield return new WaitForSeconds((float)1.6);
+        _animator.Play(_idleAnimation);
     }
 }

@@ -5,6 +5,7 @@ public class Stats : MonoBehaviour
 {
     public GameObject moneyText;
     public GameObject heroHp;
+    public GameObject attackButton;
     public LocationNames locationName = LocationNames.StartingLocation;
 
     private int _money;
