@@ -11358,7 +11358,7 @@ MonoBehaviour:
   accuracyRating: 0
   cameraPos: 1
   moneyToSet: 0
-  dialogNameToSet: dialogue_loc_2_basement
+  dialogNameToSet: dialogue_loc_4
   linkedObject: {fileID: 0}
   teleportX: 0
   teleportY: 0
