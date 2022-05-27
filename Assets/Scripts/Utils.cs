@@ -75,6 +75,17 @@ public class Utils
         return list;
     }
 
+    public static List<GameObject> GetPlayerAndFollowers()
+    {
+        var list = new List<GameObject>();
+        foreach (var obj in GetAllObjectsInScene())
+            if (obj.GetComponent<Entity>() != null &&
+                obj.GetComponent<Entity>().type is TargetTypes.Player or TargetTypes.Follower)
+                list.Add(obj);
+
+        return list;
+    }
+
     public static Save CreateSaveGameObject(List<GameObject> targets)
     {
         var save = new Save();

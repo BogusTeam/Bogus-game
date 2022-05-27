@@ -13,6 +13,9 @@ public class Entity : MonoBehaviour
     public int moneyToSet;
     public string dialogNameToSet;
     public GameObject linkedObject;
+    public float teleportX;
+    public float teleportY;
+    public float teleportZ;
 
     // private void OnApplicationPause(bool pauseStatus)
     // {

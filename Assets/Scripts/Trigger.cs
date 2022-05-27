@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Trigger : MonoBehaviour
 {
@@ -7,6 +8,9 @@ public class Trigger : MonoBehaviour
     public string dialogName;
     public GameObject linkedObject;
     public bool triggered;
+    public float teleportX;
+    public float teleportY;
+    public float teleportZ;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +20,9 @@ public class Trigger : MonoBehaviour
         money = script.moneyToSet;
         dialogName = script.dialogNameToSet;
         linkedObject = script.linkedObject;
+        teleportX = script.teleportX;
+        teleportY = script.teleportY;
+        teleportZ = script.teleportZ;
     }
 
     // Update is called once per frame
@@ -32,7 +39,8 @@ public class Trigger : MonoBehaviour
 
         if (triggered)
             return;
-        triggered = true;
+        if (triggerType != TriggerTypes.Teleport)
+            triggered = true;
 
         switch (triggerType)
         {
@@ -49,6 +57,13 @@ public class Trigger : MonoBehaviour
             case TriggerTypes.Fight:
                 break;
             case TriggerTypes.Teleport:
+                foreach (var entity in Utils.GetPlayerAndFollowers())
+                {
+                    entity.GetComponent<NavMeshAgent>().enabled = false;
+                    entity.transform.position = new Vector3(teleportX, teleportY, teleportZ);
+                    entity.GetComponent<NavMeshAgent>().enabled = true;
+                }
+
                 break;
         }
     }
