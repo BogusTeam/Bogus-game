@@ -6,14 +6,14 @@ public class MainMenu : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("test_location_2");
     }
 
     public void LoadGame()
     {
         if (File.Exists(Application.persistentDataPath + $"/{Utils.SaveName}"))
         {
-            SceneManager.LoadScene("MainScene");
+            SceneManager.LoadScene("test_location_2");
             SceneManager.sceneLoaded += (_, _) => Utils.LoadSavedGame();
         }
     }
