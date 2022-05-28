@@ -28,7 +28,7 @@ public class FollowerPlayer : MonoBehaviour
         var delta = _player.transform.position - _agent.transform.position;
         // Debug.Log($"Stopped: {_agent.isStopped}");
         // Debug.Log(delta);
-        if (Math.Abs(delta.x) > 4.0 || Math.Abs(delta.z) > 4.0)
+        if (Math.Abs(delta.x) > 6.0 || Math.Abs(delta.z) > 6.0)
         {
             if (_agent.isStopped)
                 _agent.Resume();
