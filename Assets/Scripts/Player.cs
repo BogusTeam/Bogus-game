@@ -27,15 +27,7 @@ public class Player : MonoBehaviour
         _animator = GetComponent<Animator>();
         _pauseMenu = Utils.GetPausedScript();
         _dialogs = Utils.GetDialogsScript();
-        Utils.GetStatsScript()!.attackButton.GetComponent<Button>().onClick.AddListener(() =>
-        {
-            StartCoroutine(GetHit());
-            var enemies = Utils.GetEnemies();
-            if (enemies.Count > 0)
-            {
-                enemies[0].GetComponent<Enemy>().GetDamage(-GetComponent<Entity>().attackRating);
-            }
-        });
+        Utils.GetStatsScript()!.attackButton.GetComponent<Button>().onClick.AddListener(StartAttack);
     }
 
     // Update is called once per frame
@@ -68,6 +60,9 @@ public class Player : MonoBehaviour
                 _animator.Play(_idleAnimation);
             }
         }
+        
+        if (Input.GetKeyDown(KeyCode.F))
+            StartAttack();
     }
 
     public IEnumerator GetHit()
@@ -82,5 +77,23 @@ public class Player : MonoBehaviour
         _animator.Play(_blockAnimation);
         yield return new WaitForSeconds((float)1.6);
         _animator.Play(_idleAnimation);
+    }
+
+    public void StartAttack()
+    {
+        StartCoroutine(GetHit());
+        var enemies = Utils.GetEnemies();
+        if (enemies.Count > 0)
+        {
+            foreach (var enemy in enemies)
+            {
+                var delta = gameObject.transform.position - enemy.transform.position;
+                if (Math.Abs(delta.x) < 12.0 && Math.Abs(delta.z) < 12.0)
+                {
+                    enemy.GetComponent<Enemy>().GetDamage(-GetComponent<Entity>().attackRating);
+                    break;
+                }
+            }
+        }
     }
 }

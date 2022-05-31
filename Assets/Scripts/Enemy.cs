@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
             return;
         // Make check if enemy turn, then go to player/follower and fight!
         var delta = _player.transform.position - _agent.transform.position;
-        if (Math.Abs(delta.x) > 4.0 || Math.Abs(delta.z) > 4.0)
+        if (Math.Abs(delta.x) > 7.0 && Math.Abs(delta.z) > 7.0)
         {
             if (_agent.isStopped)
                 _agent.Resume();

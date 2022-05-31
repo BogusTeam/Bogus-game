@@ -63,7 +63,6 @@ public class Trigger : MonoBehaviour
                     entity.transform.position = new Vector3(teleportX, teleportY, teleportZ);
                     entity.GetComponent<NavMeshAgent>().enabled = true;
                 }
-
                 break;
         }
     }

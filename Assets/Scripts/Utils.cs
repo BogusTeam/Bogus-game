@@ -86,7 +86,7 @@ public class Utils
 
         return list;
     }
-    
+
     public static List<GameObject> GetEnemies()
     {
         var list = new List<GameObject>();
@@ -167,6 +167,8 @@ public class Utils
         var playerObj = GetPlayerObject();
         playerObj!.GetComponent<Entity>().healthPoints += hp;
         var playerHp = playerObj!.GetComponent<Entity>().healthPoints;
+        if (playerHp < 1)
+            playerHp = 0;
 
         var statsScript = GetStatsScript();
         if (statsScript != null)
